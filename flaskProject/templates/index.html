@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    Каталог
+{% endblock %}
+
+{% block catalog %}
+    {% if items|length > 0 %}
+        <div class="row">
+            {% for it in items %}
+                <div class="col-sm">
+                    <div class="product-card">
+                        <div class="badge">Hot</div>
+                        <div class="product-tumb">
+                            <img src="{{ it.url }}" alt="">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-catagory">{{ it.brand }}</span>
+                            <h4><a href="">{{ it.brand }} {{ it.model }} ({{ it.rom }} ГБ)</a></h4>
+                            <ul>
+                                <li>ОС: {{ it.platform }}</li>
+                                <li>Диагональ: {{ it.display }}"</li>
+                                <li>Экран: {{ it.resolution }}</li>
+                                <li>Батарея: {{ it.battery }} мАч</li>
+                                <li>Процессор: {{ it.cpu }}</li>
+                                <li>Память: {{ it.rom }} ГБ</li>
+                                <li>Камера (задняя): {{ it.back }}</li>
+                                <li>Камера (передняя): {{ it.front }}</li>
+                            </ul>
+                            <p>{{ it.description }}</p>
+                            <div class="product-bottom-details">
+                                <div class="product-price">$ {{ it.price }}</div>
+                                <div class="product-links">
+                                    <a href="/buy"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="alert alert-warning" role="alert">
+                К сожалению, товаров нет в магазине.
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

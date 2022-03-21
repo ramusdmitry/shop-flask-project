@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    Сравнение
+{% endblock %}
+{% block comparison %}
+    <div class="container">
+        <form class="form" method="post">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Телефон №1</label>
+            <select name="first" class="form-control my-2 mr-sm-2">
+                <option selected>Выбрать...</option>
+                {% for phone in phones %}
+                    <option value={{ phone.id }}>{{ phone.brand }} {{ phone.model }} {{ phone.rom }}</option>
+                {% endfor %}
+            </select>
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Телефон №2</label>
+            <select name="second" class="form-control my-2 mr-sm-2">
+                <option selected>Выбрать...</option>
+                {% for phone in phones %}
+                    <option value={{ phone.id }}>{{ phone.brand }} {{ phone.model }} {{ phone.rom }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary my-1">Сравнить</button>
+        </form>
+        {% block result %}
+        {% endblock %}
+    </div>
+
+{% endblock %}

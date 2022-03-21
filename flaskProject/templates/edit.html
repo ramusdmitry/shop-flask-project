@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    Изменить
+{% endblock %}
+{% block editor %}
+<div class="container">
+    <h3>Добавить новую позицию</h3>
+    <form action="/edit" method="post">
+        <input type="text" name="brand" id="brand" class="form-control" placeholder="Название бренда (Apple, Samsung...)"><br>
+        <input type="text" name="model" id="model" class="form-control" placeholder="Название модели (iPhone 11, Galaxy S21...)"><br>
+        <input type="text" name="platform" id="platform" class="form-control" placeholder="Android или IOS"><br>
+        <input type="number" min="4.0" max="7.0" step="0.1" name="display" id="display" class="form-control" placeholder="Размер экрана (дюйм)"><br>
+        <input type="text" name="resolution" id="resolution" class="form-control" placeholder="Разрешение экрана (HD, FullHD, 2K, 4K)"><br>
+        <input type="number" min="1500" max="6000" name="battery" id="battery" class="form-control" placeholder="Батарея (мАч)"><br>
+        <input type="text" name="cpu" id="cpu" class="form-control" placeholder="Процессор"><br>
+        <input type="text" min="1" max="16" step="1" name="ram" id="ram" class="form-control" placeholder="Оперативная память (ГБ)"><br>
+        <input type="number" min="16" max="1024" name="rom" id="rom" class="form-control" placeholder="Постоянная память (ГБ)"><br>
+        <input type="text" name="url" id="url" class="form-control" placeholder="Ссылка на фото"><br>
+        <input type="text" name="description" id="description" class="form-control" placeholder="Описание"><br>
+        <input type="number" min="0" max="3000" step="1" name="price" id="price" class="form-control" placeholder="Цена ($)"><br>
+        <input type="text" name="front" id="front" class="form-control" placeholder="Фронтальная камера(/ы): запись через запятую '12, 5, 5' "><br>
+        <input type="text" name="back" id="back" class="form-control" placeholder="Основная камера(/ы): запись через запятую '12, 12, 8, 5'"><br>
+        <input type="submit" class="btn btn-success" value="Добавить"><br>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>
