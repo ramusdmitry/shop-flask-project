@@ -8,10 +8,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+<<<<<<< HEAD
 CPU = {'A15': 20, 'A14': 18, 'A13': 16, 'A12': 14,
        '888': 18, '865': 16, '855': 14, '845': 12,
        '2200': 18, '2100': 16, '990': 12, '9810': 10}
 
+=======
+>>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
 
 class Phone(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,11 +24,18 @@ class Phone(db.Model):
     display = db.Column(db.Float)
     resolution = db.Column(db.String(16), nullable=False)
     battery = db.Column(db.Integer)
+<<<<<<< HEAD
     cpu = db.Column(db.String(32), nullable=False)
     ram = db.Column(db.Integer, nullable=False)
     rom = db.Column(db.Integer, nullable=False)
     front = db.Column(db.String(32))
     back = db.Column(db.String(32))
+=======
+
+    cpu = db.Column(db.String(32), nullable=False)
+    ram = db.Column(db.String(32), nullable=False)
+    rom = db.Column(db.String(32), nullable=False)
+>>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
     url = db.Column(db.String(256))
     description = db.Column(db.Text)
     price = db.Column(db.Integer)
@@ -47,15 +57,23 @@ def create():
         ram = request.form['ram']
         rom = request.form['rom']
         url = request.form['url']
+<<<<<<< HEAD
         front = request.form['front']
         back = request.form['back']
+=======
+>>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
         description = request.form['description']
         price = request.form['price']
 
         phone = Phone(brand=brand, model=model, platform=platform,
                       display=display, resolution=resolution, battery=battery,
                       cpu=cpu, ram=ram, rom=rom, url=url, description=description,
+<<<<<<< HEAD
                       price=price, front=front, back=back)
+=======
+                      price=price)
+
+>>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
         try:
             db.session.add(phone)
             db.session.commit()
@@ -77,6 +95,7 @@ def edit():
     return render_template('edit.html')
 
 
+<<<<<<< HEAD
 @app.route('/compare', methods=['GET', 'POST'])
 def compare():
     phones = Phone.query.order_by(Phone.id).all()
@@ -159,6 +178,11 @@ def compare_devices(first, second):
         return first, first_best
     else:
         return second, second_best
+=======
+@app.route('/compare')
+def compare():
+    return render_template('compare.html')
+>>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
 
 
 if __name__ == '__main__':
