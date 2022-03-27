@@ -1,0 +1,53 @@
+version: '3.4'
+services:
+  app:
+    image: ramusdmitry/shop_flask:latest
+    container_name: shop_flask
+    restart: unless-stopped
+    labels:
+      project: "flask"
+      day: "26 Mar 2022"
+    build:
+      # build the image from Dockerfile
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      # set database, memcached etc credentials
+      DB_HOST: mysql
+      DB_NAME: shop
+      DB_USER: shop
+      DB_PASSWORD: knad212
+    volumes:
+      - ./flaskProject:/flaskProject
+    links:
+      # network connection with these services
+      - mysql
+    depends_on:
+      # build those images first
+      - mysql
+    ports:
+      # bind on our 5000 port because most people have 80, 8080 already bound
+      - "8080:8080"
+
+  mysql:
+    container_name: flask_mysql
+    # let's grab from mysql 5.7 image
+    image: mysql:5.7
+    volumes:
+        # pass volume named mysql-data to mysql container
+      - mysql-data:/mysql
+    restart: unless-stopped
+    labels:
+      project: "flask"
+      day: "26 Mar 2022"
+    # ports:
+    #   - "3306:3306"
+    environment:
+      # credentials
+      MYSQL_ROOT_PASSWORD: knad212
+      MYSQL_DATABASE: shop
+      MYSQL_USER: shop
+      MYSQL_PASSWORD: knad212
+volumes:
+  mysql-data:
+    driver: local
