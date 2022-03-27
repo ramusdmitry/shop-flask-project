@@ -1,6 +1,13 @@
 # shop-flask-project
 Интернет-магазин телефонов с использованием базы данных, , с представлением товаров на странице в виде иконок и подробной карточкой для каждого товара и возможностью сравнения.
 
+## Установка
+> pip install -r requirements.txt
+## Запуск
+> docker-compuse build
+> 
+> docker-compose up
+
 ### Главная
 ![image](https://user-images.githubusercontent.com/65753926/160275597-5efa6bc8-581f-4a40-a9b0-5338bf057f8b.png)
 
