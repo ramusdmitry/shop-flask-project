@@ -5,7 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import delete, select, update, values
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shop.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://shop:knad212@mysql/shop'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -33,6 +34,9 @@ class Phone(db.Model):
     def __repr__(self):
         return '<Phone %r>' % self.id
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 def create_item(req):
     brand = request.form['brand']
@@ -214,4 +218,4 @@ def compare():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8080)
