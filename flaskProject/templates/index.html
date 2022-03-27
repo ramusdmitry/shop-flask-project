@@ -5,58 +5,55 @@
 
 {% block catalog %}
     {% if items|length > 0 %}
-        <div class="row">
-            {% for it in items %}
-<<<<<<< HEAD
-                <div class="col-sm">
-=======
-                <div class="col-sm-4">
->>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
-                    <div class="product-card">
-                        <div class="badge">Hot</div>
-                        <div class="product-tumb">
-                            <img src="{{ it.url }}" alt="">
-                        </div>
-                        <div class="product-details">
-                            <span class="product-catagory">{{ it.brand }}</span>
-                            <h4><a href="">{{ it.brand }} {{ it.model }} ({{ it.rom }} ГБ)</a></h4>
-                            <ul>
-                                <li>ОС: {{ it.platform }}</li>
-                                <li>Диагональ: {{ it.display }}"</li>
-                                <li>Экран: {{ it.resolution }}</li>
-                                <li>Батарея: {{ it.battery }} мАч</li>
-                                <li>Процессор: {{ it.cpu }}</li>
-                                <li>Память: {{ it.rom }} ГБ</li>
-                                <li>Камера (задняя): {{ it.back }}</li>
-                                <li>Камера (передняя): {{ it.front }}</li>
-                            </ul>
-                            <p>{{ it.description }}</p>
-                            <div class="product-bottom-details">
-                                <div class="product-price">$ {{ it.price }}</div>
-                                <div class="product-links">
-<<<<<<< HEAD
-=======
-                                    <a href="/compare"><i class="fa fa-rocket"></i></a>
->>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
-                                    <a href="/buy"><i class="fa fa-shopping-cart"></i></a>
+        <div class="card-deck">
+            <div class="row row-cols-1">
+                {% for it in items %}
+                    <div class="col-3 d-flex align-items-stretch mx-auto my-2">
+                        <div class="card my-2" style="box-shadow: 0 2px 7px #dfdfdf">
+                            <img src="{{ it.url }}" class="card-img-top mx-auto p-3" style="width: 50%; height: 50%; object-fit: contain"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ it.model }}</h5>
+                                <h6 class="card-subtitle text-center mb-4 text-muted">{{ it.brand }}</h6>
+                                <ul class="pt-1 pb-1">
+                                    <li>ОС: {{ it.platform }}</li>
+                                    <li>Диагональ: {{ it.display }}"</li>
+                                    <li>Экран: {{ it.resolution }} {{ it.type_display }}</li>
+                                    <li>Батарея: {{ it.battery }} мАч</li>
+                                    <li>Процессор: {{ it.cpu }}</li>
+                                    <li>Память: {{ it.ram }}/{{ it.rom }} ГБ</li>
+                                    <li>Камера (задняя, MП): {{ it.back }}</li>
+                                    <li>Камера (передняя, МП): {{ it.front }}</li>
+                                    <li>Год: {{ it.year }}</li>
+                                </ul>
+                                <br>
+                                <footer class="blockquote-footer text-center">
+                                    <p class="text-muted">
+                                        {{ it.description }}
+                                    </p>
+                                </footer>
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <button type="button" class="btn btn-outline-secondary my-1">Сравнить
+                                            </button>
+                                            <button type="button" class="btn btn-outline-success my-1" id="buy">Купить
+                                                за {{ it.price }}$
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     {% else %}
         <div class="container">
-<<<<<<< HEAD
             <div class="alert alert-warning" role="alert">
                 К сожалению, товаров нет в магазине.
             </div>
         </div>
-=======
-        <div class="alert alert-warning" role="alert">
-            К сожалению, товаров нет в магазине.
-        </div></div>
->>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
     {% endif %}
 {% endblock %}

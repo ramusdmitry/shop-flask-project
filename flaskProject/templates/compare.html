@@ -3,7 +3,6 @@
     Сравнение
 {% endblock %}
 {% block comparison %}
-<<<<<<< HEAD
     <div class="container">
         <form class="form" method="post">
             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Телефон №1</label>
@@ -22,10 +21,48 @@
             </select>
             <button type="submit" class="btn btn-primary my-1">Сравнить</button>
         </form>
-        {% block result %}
+        {% block info %}
+            {% if winner[0] > 0 %}
+                <div>
+                    <br>
+                    <div class="row row-cols-1">
+                    <div class="col-3 d-flex align-items-stretch mx-auto my-2">
+                        <div class="card border-success mb-3 mx-auto" style="max-width: 18rem;">
+                            <img src="{{ phones[winner[0] - 1].url }}" class="card-img-top mx-auto p-3"
+                                 style="width: 50%; height: 50%; object-fit: contain"
+                                 alt="...">
+                            <div class="card-header">{{ phones[winner[0] - 1].brand }}</div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{ phones[winner[0] - 1].model }}</h5>
+                                {% if winner[1]|length > 0 %}
+                                    {% for best in winner[1] %}
+                                        <p>{{ best }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <h4 class="text-success text-center mx-3 my-3">Лучший выбор!</h4>
+                        </div></div>
+                    <div class="col-3 d-flex align-items-stretch mx-auto my-2">
+                        <div class="card border-danger mb-3 mx-auto" style="max-width: 18rem;">
+                            <img src="{{ phones[looser[0] - 1].url }}" class="card-img-top mx-auto p-3"
+                                 style="width: 50%; height: 50%; object-fit: contain"
+                                 alt="...">
+                            <div class="card-header">{{ phones[looser[0] - 1].brand }}</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ phones[looser[0] - 1].model }}</h5>
+                                {% if looser[1]|length > 0 %}
+                                    {% for best in looser[1] %}
+                                        <p>{{ best }}</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <h4 class="text-danger text-center mx-3 my-3">Не стоит выбирать</h4>
+                        </div>
+                    </div></div>
+                </div>
+            {% endif %}
         {% endblock %}
     </div>
 
-=======
->>>>>>> 34626e1d73ceaa2e62665055d154baa60e524d42
 {% endblock %}

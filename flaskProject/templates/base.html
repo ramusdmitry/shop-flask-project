@@ -19,9 +19,11 @@
         <a class="p-3 text-dark" href="/edit">Добавить</a>
     </nav>
 </div>
-{% block catalog %}
-    <div class="container"></div>
-{% endblock %}
+<div class="container">
+    {% block catalog %}
+
+    {% endblock %}
+</div>
 {% block comparison %}{% endblock %}
 {% block editor %}{% endblock %}
 </body>
